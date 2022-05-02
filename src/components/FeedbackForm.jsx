@@ -1,10 +1,10 @@
 import { useState } from "react";
 
+import RatingSelect from "./RatingSelect";
 import Card from "./shared/Card";
 import Button from "./shared/Button";
-import RatingSelect from "./RatingSelect";
 
-function FeedbackForm() {
+function FeedbackForm({ handleAdd }) {
   // setting text state
   const [text, setText] = useState("");
   const [rating, setRating] = useState(10);
@@ -26,9 +26,22 @@ function FeedbackForm() {
     setText(event.target.value);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault(); // stops the form from submitting to file
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+      handleAdd(newFeedback);
+
+      setText("");
+    }
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>How would you rate your service with us?</h2>
         <RatingSelect select={(rating) => setRating(rating)} />
         <div className="input-group">
