@@ -4,8 +4,6 @@
 // without jsx just plain javascript
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
-import { useState } from "react";
 import Header from "./components/Header";
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
@@ -14,27 +12,13 @@ import AboutPage from "./pages/AboutPage";
 import AboutIconLink from "./components/AboutIconLink";
 import { FeedbackProvider } from "./context/FeedbackContext";
 
-import FeedbackData from "./data/FeedbackData";
-
 // want to return jsx (html into javascript)
 function App() {
   // can only have one element - solution is div or fragment <></>
   // cannot use class in jsx, must use className
   // cannot use for, must use htmlFor
 
-  const [feedback, setFeedback] = useState(FeedbackData);
-
-  const addFeedback = (newFeedback) => {
-    newFeedback.id = uuidv4();
-    setFeedback([newFeedback, ...feedback]); // set array to new feedback, plus ...existing feedback objects
-  };
-
   // want this here because this is where we setfeedback
-  const deleteFeedback = (id) => {
-    if (window.confirm("Are you sure you want to delete?")) {
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
-  };
 
   return (
     <FeedbackProvider>
@@ -47,11 +31,9 @@ function App() {
               path="/"
               element={
                 <>
-                  <FeedbackForm handleAdd={addFeedback} />
+                  <FeedbackForm />
                   <FeedbackStats />
-                  <FeedbackList
-                    handleDelete={deleteFeedback}
-                  />
+                  <FeedbackList />
                 </>
               }
             ></Route>
