@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
 function RatingSelect({ select }) {
   const [selected, setSelected] = useState(10);
@@ -8,7 +9,13 @@ function RatingSelect({ select }) {
     select(+event.currentTarget.value);
   };
 
-  // smarter way to do this
+  const { feedbackEdit } = useContext(FeedbackContext);
+
+  useEffect(() => {
+    setSelected(feedbackEdit.item.rating);
+  }, [feedbackEdit]);
+
+  // there is a smarter way to do this
   return (
     <ul className="rating">
       <li>

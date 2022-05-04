@@ -51,6 +51,7 @@ export const FeedbackProvider = ({ children }) => {
     });
   };
 
+  // editFeedback is function, feedbackEdit is state
   return (
     <FeedbackContext.Provider
       value={{
@@ -58,6 +59,7 @@ export const FeedbackProvider = ({ children }) => {
         deleteFeedback,
         addFeedback,
         editFeedback,
+        feedbackEdit,
       }}
     >
       {children}
