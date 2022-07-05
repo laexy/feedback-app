@@ -18,8 +18,6 @@ function App() {
   // cannot use class in jsx, must use className
   // cannot use for, must use htmlFor
 
-  // want this here because this is where we setfeedback
-
   return (
     <FeedbackProvider>
       <Router>
