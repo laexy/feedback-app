@@ -1,8 +1,11 @@
 # Feedback App from React Front to Back Course
 
+## Course
+[Link to Course](https://www.udemy.com/course/react-front-to-back-2022/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-[Link to Course](https://www.udemy.com/course/react-front-to-back-2022/)
+
 
 ## Available Scripts
 
